@@ -22,9 +22,4 @@ public class Post {
 	public void changeTitle(String title){
 		this.title = title;
 	}
-
-	public static Post createPost(String title){
-		return new Post(IDGenerator.generateId(), title);
-	}
-
 }

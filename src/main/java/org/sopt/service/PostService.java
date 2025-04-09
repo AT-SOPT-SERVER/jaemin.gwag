@@ -20,7 +20,7 @@ public class PostService {
 		try{
 			validationUtil.validateTitle(title);
 			validationUtil.validateDuplicate(title);
-			Post post = Post.createPost(title);
+			Post post = new Post(IDGenerator.generateId(), title);
 			postRepository.save(post);
 			return post;
 		}catch (IllegalArgumentException e){
