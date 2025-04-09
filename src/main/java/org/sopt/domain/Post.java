@@ -1,5 +1,7 @@
 package org.sopt.domain;
 
+import org.sopt.Util.IDGenerator;
+
 public class Post {
 	private int id;
 	private String title;
@@ -19,6 +21,10 @@ public class Post {
 
 	public void changeTitle(String title){
 		this.title = title;
+	}
+
+	public static Post createPost(String title){
+		return new Post(IDGenerator.generateId(), title);
 	}
 
 }

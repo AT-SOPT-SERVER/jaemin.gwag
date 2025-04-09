@@ -13,9 +13,7 @@ public class PostController {
 	private final PostService postService = new PostService();
 
 	public Post createPost(String title){
-		Post post = new Post(IDGenerator.generateId(),title);
-
-		Post createdPost = postService.createPost(post);
+		Post createdPost = postService.createPost(title);
 		return createdPost;
 	}
 

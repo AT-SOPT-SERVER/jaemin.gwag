@@ -2,6 +2,7 @@ package org.sopt.service;
 
 import java.util.List;
 
+import org.sopt.Util.IDGenerator;
 import org.sopt.domain.Post;
 import org.sopt.repository.PostRepository;
 import org.sopt.Util.ValidationUtil;
@@ -15,10 +16,11 @@ public class PostService {
 		this.validationUtil = new ValidationUtil(postRepository);
 	}
 
-	public Post createPost(Post post){
+	public Post createPost(String title){
 		try{
-			validationUtil.validateTitle(post.getTitle());
-			validationUtil.validateDuplicate(post.getTitle());
+			validationUtil.validateTitle(title);
+			validationUtil.validateDuplicate(title);
+			Post post = Post.createPost(title);
 			postRepository.save(post);
 			return post;
 		}catch (IllegalArgumentException e){
