@@ -2,17 +2,18 @@ package org.sopt.controller;
 
 import java.util.List;
 
+import org.sopt.Util.IDGenerator;
+import org.sopt.Util.ValidationUtil;
 import org.sopt.domain.Post;
+import org.sopt.repository.PostRepository;
 import org.sopt.service.PostService;
 
 public class PostController {
 
 	private final PostService postService = new PostService();
-	private int postId;
-
 
 	public Post createPost(String title){
-		Post post = new Post(postId ++,title);
+		Post post = new Post(IDGenerator.generateId(),title);
 
 		Post createdPost = postService.createPost(post);
 		return createdPost;

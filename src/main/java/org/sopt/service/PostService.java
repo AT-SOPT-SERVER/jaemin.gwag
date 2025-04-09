@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.sopt.domain.Post;
 import org.sopt.repository.PostRepository;
-import org.sopt.validator.ValidationUtil;
+import org.sopt.Util.ValidationUtil;
 
 public class PostService {
 	private final PostRepository postRepository;

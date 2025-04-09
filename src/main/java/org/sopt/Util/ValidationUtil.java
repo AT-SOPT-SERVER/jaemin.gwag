@@ -1,4 +1,4 @@
-package org.sopt.validator;
+package org.sopt.Util;
 
 import java.util.List;
 
