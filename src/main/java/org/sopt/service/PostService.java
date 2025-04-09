@@ -18,6 +18,7 @@ public class PostService {
 	public Post createPost(Post post){
 		try{
 			validationUtil.validateTitle(post.getTitle());
+			validationUtil.validateDuplicate(post.getTitle());
 			postRepository.save(post);
 			return post;
 		}catch (IllegalArgumentException e){
@@ -50,6 +51,7 @@ public class PostService {
 		try{
 			validationUtil.validatePost(postId);
 			validationUtil.validateTitle(title);
+			validationUtil.validateDuplicate(title);
 			Post existedPost = postRepository.findPostById(postId);
 			existedPost.changeTitle(title);
 			postRepository.updatePost(existedPost);
