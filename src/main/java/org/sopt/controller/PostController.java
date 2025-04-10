@@ -13,6 +13,7 @@ public class PostController {
 	private final PostService postService = new PostService();
 
 	public Post createPost(String title){
+		ValidationUtil.validateTitle(title);
 		Post createdPost = postService.createPost(title);
 		return createdPost;
 	}
@@ -36,6 +37,7 @@ public class PostController {
 
 	/* 게시글 수정 기능 */
 	public boolean updatePostTitle(final int postId, final String title){
+		ValidationUtil.validateTitle(title);
 		boolean isUpdated = postService.updatePost(postId, title);
 		return isUpdated;
 	}

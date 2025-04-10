@@ -18,7 +18,6 @@ public class PostService {
 
 	public Post createPost(String title){
 		try{
-			validationUtil.validateTitle(title);
 			validationUtil.validateDuplicate(title);
 			Post post = new Post(IDGenerator.generateId(), title);
 			postRepository.save(post);
@@ -52,7 +51,6 @@ public class PostService {
 	public boolean updatePost(final int postId, final String title){
 		try{
 			validationUtil.validatePost(postId);
-			validationUtil.validateTitle(title);
 			validationUtil.validateDuplicate(title);
 			Post existedPost = postRepository.findPostById(postId);
 			existedPost.changeTitle(title);

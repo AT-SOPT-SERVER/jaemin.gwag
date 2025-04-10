@@ -19,7 +19,7 @@ public class ValidationUtil {
 		}
 	}
 
-	public void validateTitle(String title){
+	public static void validateTitle(String title){
 		if((title.isEmpty()) || (title.length() > 30)){
 			throw new IllegalArgumentException("제목은 1자 이상, 30자 이하여야 합니다");
 		}
