@@ -16,7 +16,7 @@ public class PostService {
 		this.validationUtil = new ValidationUtil(postRepository);
 	}
 
-	public Post createPost(String title){
+	public Post createPost(final String title){
 		try{
 			validationUtil.validateDuplicate(title);
 			Post post = new Post(IDGenerator.generateId(), title);

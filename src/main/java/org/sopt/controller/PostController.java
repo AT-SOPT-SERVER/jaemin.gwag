@@ -36,7 +36,7 @@ public class PostController {
 	}
 
 	/* 게시글 수정 기능 */
-	public boolean updatePostTitle(final int postId, final String title){
+	public boolean updatePostTitle(int postId, String title){
 		ValidationUtil.validateTitle(title);
 		boolean isUpdated = postService.updatePost(postId, title);
 		return isUpdated;
