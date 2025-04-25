@@ -49,7 +49,7 @@ public class PostController {
 		return ResponseEntity.ok(SuccessResponse.of(SuccessCode.SUCCESS_DELETE));
 	}
 
-	@GetMapping("post?keyword={keyword}")
+	@GetMapping("/post/search?keyword={keyword}")
 	public ResponseEntity<SuccessResponse<?>> searchPostsByKeyword(String keyword) {
 		PostListResponse postListResponse = postService.getByKeyword(keyword);
 		return ResponseEntity.ok(SuccessResponse.of(SuccessCode.SUCCESS_FETCH, postListResponse));
