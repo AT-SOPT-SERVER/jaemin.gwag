@@ -45,18 +45,6 @@ public class GlobalExceptionHandler {
 		return buildErrorResponse(ErrorCode.MISSING_HEADER, ex.getHeaderName());
 	}
 
-	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<ErrorResponse> handleTypeMismatchException(MethodArgumentTypeMismatchException ex) {
-		String detail = ex.getRequiredType() != null
-			? String.format("'%s'은(는) %s 타입이어야 합니다.", ex.getName(), ex.getRequiredType().getSimpleName())
-			: "타입 변환 오류입니다.";
-		return buildErrorResponse(ErrorCode.TYPE_MISMATCH, detail);
-	}
-
-	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
-		return buildErrorResponse(ErrorCode.DATA_INTEGRITY_VIOLATION, ex.getMessage());
-	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleGeneralException(Exception ex) {
@@ -72,10 +60,5 @@ public class GlobalExceptionHandler {
 	private ResponseEntity<ErrorResponse> buildErrorResponse(ErrorCode errorCode, Object detail) {
 		return ResponseEntity.status(errorCode.getHttpStatus())
 			.body(ErrorResponse.of(errorCode, detail));
-	}
-
-	@ExceptionHandler(IOException.class)
-	public ResponseEntity<String> handleIoException(IOException ex) {
-		return ResponseEntity.status(500).body("파일 처리 중 오류 발생: " + ex.getMessage());
 	}
 }

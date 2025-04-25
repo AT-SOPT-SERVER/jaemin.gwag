@@ -28,6 +28,8 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+.application.yml
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -41,4 +43,3 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-.application.yml

@@ -33,7 +33,7 @@ public class PostService {
 	public PostResponse getPostById(final Long postId){
 		PostEntity postEntity = postRepository.findById(postId)
 			.orElseThrow(()-> new BusinessException(ErrorCode.DATA_NOT_FOUND));
-		return PostResponse.of(postEntity.getId(), postEntity.getTitle());
+		return PostResponse.of(postEntity);
 	}
 
 	public void deletePostById(final Long postId){
