@@ -13,12 +13,12 @@ public interface PostRepository extends JpaRepository<PostEntity,Long> {
 
 	boolean existsByTitle(String title);
 
-	List<PostEntity> findByTitle(String keyword);
+	List<PostEntity> findByTitleOrderByCreatedAtDesc(String keyword);
 
-	List<PostEntity> findAllByOrderByCreatedAt();
+	List<PostEntity> findAllByOrderByCreatedAtDesc();
 
-	List<PostEntity> findAllByCategory(Category category);
+	List<PostEntity> findAllByCategoryOrderByCreatedAtDesc(Category category);
 
-	List<PostEntity> findAllByUser(UserEntity user);
+	List<PostEntity> findAllByUserOrderByCreatedAtDesc(UserEntity user);
 
 }

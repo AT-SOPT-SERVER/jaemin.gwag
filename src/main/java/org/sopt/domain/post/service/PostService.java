@@ -37,7 +37,7 @@ public class PostService {
 	}
 
 	public PostListResponse getPostAll(){
-		List<PostResponse> postListResponse = postRepository.findAllByOrderByCreatedAt().stream()
+		List<PostResponse> postListResponse = postRepository.findAllByOrderByCreatedAtDesc().stream()
 			.map(PostResponse::from)
 			.toList();
 
@@ -60,7 +60,7 @@ public class PostService {
 	}
 
 	public PostListResponse getByTitle(String title) {
-		List<PostResponse> postList = postRepository.findByTitle(title).stream()
+		List<PostResponse> postList = postRepository.findByTitleOrderByCreatedAtDesc(title).stream()
 			.map(PostResponse::from)
 			.toList();
 
@@ -81,7 +81,7 @@ public class PostService {
 	}
 
 	public PostListResponse getByCategory(String category){
-		List<PostResponse> postResponseList = postRepository.findAllByCategory(Category.fromName(category)).stream()
+		List<PostResponse> postResponseList = postRepository.findAllByCategoryOrderByCreatedAtDesc(Category.fromName(category)).stream()
 			.map(PostResponse::from)
 			.toList();
 
@@ -91,7 +91,7 @@ public class PostService {
 	public PostListResponse getByUserName(String userName){
 		UserEntity userEntity = userService.getUserByName(userName);
 
-		List<PostResponse> postResponseList = postRepository.findAllByUser(userEntity).stream()
+		List<PostResponse> postResponseList = postRepository.findAllByUserOrderByCreatedAtDesc(userEntity).stream()
 			.map(PostResponse::from)
 			.toList();
 
