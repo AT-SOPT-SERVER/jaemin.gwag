@@ -1,6 +1,7 @@
 package org.sopt.domain.post.entity;
 
 import org.sopt.domain.user.entity.UserEntity;
+import org.sopt.global.BaseTimeEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 @Table(name = "post")
-public class PostEntity {
+public class PostEntity extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
