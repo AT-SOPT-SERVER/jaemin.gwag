@@ -1,8 +1,8 @@
-package org.sopt.api.repository;
+package org.sopt.domain.post.repository;
 
 import java.util.List;
 
-import org.sopt.api.domain.PostEntity;
+import org.sopt.domain.post.entity.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

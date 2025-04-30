@@ -1,9 +1,9 @@
-package org.sopt.api.controller;
+package org.sopt.domain.post.controller;
 
-import org.sopt.api.dto.PostCreateOrUpdateRequest;
-import org.sopt.api.dto.PostListResponse;
-import org.sopt.api.dto.PostResponse;
-import org.sopt.api.service.PostService;
+import org.sopt.domain.post.dto.PostCreateOrUpdateRequest;
+import org.sopt.domain.post.dto.PostListResponse;
+import org.sopt.domain.post.dto.PostResponse;
+import org.sopt.domain.post.service.PostService;
 import org.sopt.global.error.code.SuccessCode;
 import org.sopt.global.error.dto.SuccessResponse;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -27,8 +28,9 @@ public class PostController {
 	}
 
 	@PostMapping("/post")
-	public ResponseEntity<SuccessResponse<?>> createPost(@Valid @RequestBody final PostCreateOrUpdateRequest postRequest){
-		postService.createPost(postRequest.title());
+	public ResponseEntity<SuccessResponse<?>> createPost(@Valid @RequestBody final PostCreateOrUpdateRequest postRequest,
+		@RequestHeader("userId") Long userId){
+		postService.createPost(userId, postRequest);
 		return ResponseEntity.ok(SuccessResponse.of(SuccessCode.SUCCESS_CREATE));
 	}
 

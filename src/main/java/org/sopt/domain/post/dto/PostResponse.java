@@ -1,6 +1,6 @@
-package org.sopt.api.dto;
+package org.sopt.domain.post.dto;
 
-import org.sopt.api.domain.PostEntity;
+import org.sopt.domain.post.entity.PostEntity;
 
 
 public record PostResponse(
