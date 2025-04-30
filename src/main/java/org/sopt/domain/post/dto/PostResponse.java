@@ -2,16 +2,11 @@ package org.sopt.domain.post.dto;
 
 import org.sopt.domain.post.entity.PostEntity;
 
-
 public record PostResponse(
-	Long postId,
-	String title
+	String title,
+	String username
 ) {
-	public static PostResponse of(PostEntity postEntity) {
-		return new PostResponse(postEntity.getId(), postEntity.getTitle());
-	}
-
 	public static PostResponse from(PostEntity postEntity) {
-		return new PostResponse(postEntity.getId(), postEntity.getTitle());
+		return new PostResponse(postEntity.getTitle(), postEntity.getUser().getName());
 	}
 }

@@ -20,8 +20,15 @@ public class UserService {
 		userRepository.save(userEntity);
 	}
 
-	public UserEntity getUser(Long userId) {
+	public UserEntity getUserById(Long userId) {
 		UserEntity userEntity = userRepository.findById(userId)
+			.orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+
+		return userEntity;
+	}
+
+	public UserEntity getUserByName(String name) {
+		UserEntity userEntity = userRepository.findByName(name)
 			.orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
 
 		return userEntity;

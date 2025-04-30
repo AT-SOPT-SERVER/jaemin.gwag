@@ -2,6 +2,7 @@ package org.sopt.domain.post.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -15,7 +16,7 @@ public record PostCreateOrUpdateRequest(
 	@Size(min = 1, max = 1000, message = "내용은 최소 한 글자, 최대 1000글자 이하여야합니다")
 	String content,
 
-	@NotBlank
+	@Nullable
 	String category
 ) {
 }
