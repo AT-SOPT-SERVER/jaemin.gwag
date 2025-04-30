@@ -25,5 +25,6 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
 }
