@@ -1,5 +1,11 @@
 package org.sopt.domain.post.entity;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
+import org.hibernate.annotations.Where;
 import org.sopt.domain.user.entity.UserEntity;
 import org.sopt.global.BaseTimeEntity;
 
@@ -24,6 +30,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@SQLDelete(sql = "UPDATE post SET del_yn = true WHERE id = ?")
+@SQLRestriction("del_yn = false")
 @Table(name = "post")
 public class PostEntity extends BaseTimeEntity {
 	@Id
@@ -43,6 +51,9 @@ public class PostEntity extends BaseTimeEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category", nullable = false)
 	private Category category;
+
+	@Column(name = "del_yn")
+	private boolean isDeleted;
 
 	@Builder
 	public PostEntity(String title, String content, UserEntity user, Category category) {
