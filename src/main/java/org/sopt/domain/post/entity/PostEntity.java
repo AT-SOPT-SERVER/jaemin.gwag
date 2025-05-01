@@ -59,4 +59,8 @@ public class PostEntity extends BaseTimeEntity {
 	public void changeTitle(String title){
 		this.title = title;
 	}
+
+	public void changeCategory(Category category){
+		this.category = category;
+	}
 }

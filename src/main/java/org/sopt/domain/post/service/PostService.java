@@ -74,6 +74,7 @@ public class PostService {
 		validateAuther(userId, existedPostEntity);
 		checkDuplicateTitle(postRequest.title());
 
+		existedPostEntity.changeCategory(Category.fromName(postRequest.category()));
 		existedPostEntity.changeTitle(postRequest.title());
 		existedPostEntity.changeContent(postRequest.content());
 
