@@ -12,6 +12,8 @@ public enum ErrorCode {
 	INVALID_FIELD_ERROR(HttpStatus.BAD_REQUEST, "E400002", "요청 필드 값이 유효하지 않습니다."),
 	MISSING_PARAMETER(HttpStatus.BAD_REQUEST, "E400003", "필수 요청 파라미터가 누락되었습니다"),
 	MISSING_HEADER(HttpStatus.BAD_REQUEST, "E400004", "필수 요청 헤더가 누락되었습니다."),
+	TYPE_MISMATCH(HttpStatus.BAD_REQUEST, "E400005", "요청 값 타입이 올바르지 않습니다"),
+
 
 
 	/* 403 */
@@ -19,6 +21,7 @@ public enum ErrorCode {
 
 	/* 404 NOT FOUND */
 	DATA_NOT_FOUND(HttpStatus.NOT_FOUND, "E404001", "데이터가 존재하지 않습니다"),
+	USER_NOT_FOUND(HttpStatus.NOT_FOUND, "E404002", "유저가 존재하지 않습니다"),
 
 	/* 500 INTERNAL SERVER ERROR */
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500001", "서버 내부에서 오류가 발생했습니다");
