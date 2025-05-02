@@ -14,6 +14,7 @@ import org.sopt.domain.user.service.UserService;
 import org.sopt.global.error.code.ErrorCode;
 import org.sopt.global.error.exception.BusinessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +24,7 @@ public class PostService {
 	private final PostRepository postRepository;
 	private final UserService userService;
 
+	@Transactional
 	public void createPost(Long userId, PostCreateOrUpdateRequest postRequest){
 		checkDuplicateTitle(postRequest.title());
 
@@ -36,6 +38,7 @@ public class PostService {
 		postRepository.save(postEntity);
 	}
 
+	@Transactional(readOnly = true)
 	public PostListResponse getPostAll(){
 		List<PostResponse> postListResponse = postRepository.findAllByOrderByCreatedAtDesc().stream()
 			.map(PostResponse::from)
@@ -50,6 +53,7 @@ public class PostService {
 		return PostDetailResponse.of(postEntity);
 	}
 
+	@Transactional
 	public void deletePostById(final Long userId, final Long postId){
 		PostEntity postEntity = postRepository.findById(postId)
 				.orElseThrow(() -> new BusinessException(ErrorCode.DATA_NOT_FOUND));
@@ -67,6 +71,7 @@ public class PostService {
 		return PostListResponse.of(postList);
 	}
 
+	@Transactional
 	public void updatePost(final Long userId, final Long postId, final PostCreateOrUpdateRequest postRequest) {
 		PostEntity existedPostEntity = postRepository.findById(postId)
 			.orElseThrow(() -> new BusinessException(ErrorCode.DATA_NOT_FOUND));
