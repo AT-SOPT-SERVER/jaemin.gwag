@@ -1,4 +1,4 @@
-package org.sopt.api.dto;
+package org.sopt.domain.post.dto;
 
 import java.util.List;
 

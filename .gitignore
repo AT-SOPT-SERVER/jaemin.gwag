@@ -28,8 +28,7 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-.application.yml
-
+src/main/resources/application.yml
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
