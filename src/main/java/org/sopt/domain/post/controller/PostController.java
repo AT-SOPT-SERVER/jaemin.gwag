@@ -41,7 +41,7 @@ public class PostController {
 
 	@GetMapping("/post/{postId}")
 	public ResponseEntity<SuccessResponse<?>> getPostById(@PathVariable Long postId){
-		PostResponse postResponse = postService.getPostById(postId);
+		PostResponse postResponse = postService.getPost(postId);
 		return ResponseEntity.ok(SuccessResponse.of(SuccessCode.SUCCESS_FETCH, postResponse));
 	}
 

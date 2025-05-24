@@ -27,7 +27,7 @@ public class PostService {
 		PostEntity postEntity = PostEntity.builder()
 			.title(postRequest.title())
 			.content(postRequest.content())
-			.user(userService.getUser(userId))
+			.user(userService.getUserById(userId))
 			.category(Category.fromName(postRequest.category()))
 			.build();
 
@@ -38,10 +38,16 @@ public class PostService {
 		return postRepository.findAll();
 	}
 
-	public PostResponse getPostById(final Long postId){
+	public PostResponse getPost(final Long postId){
 		PostEntity postEntity = postRepository.findById(postId)
 			.orElseThrow(()-> new BusinessException(ErrorCode.DATA_NOT_FOUND));
 		return PostResponse.of(postEntity);
+	}
+
+	public PostEntity getPostById(final Long postId){
+		PostEntity postEntity = postRepository.findById(postId)
+			.orElseThrow(()-> new BusinessException(ErrorCode.DATA_NOT_FOUND));
+		return postEntity;
 	}
 
 	public void deletePostById(final Long postId){
