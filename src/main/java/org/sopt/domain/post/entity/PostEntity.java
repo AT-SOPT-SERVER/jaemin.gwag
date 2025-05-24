@@ -1,13 +1,6 @@
 package org.sopt.domain.post.entity;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.SQLRestriction;
-import org.hibernate.annotations.Where;
 import org.sopt.domain.user.entity.UserEntity;
-import org.sopt.global.BaseTimeEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,10 +23,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@SQLDelete(sql = "UPDATE post SET del_yn = true WHERE id = ?")
-@SQLRestriction("del_yn = false")
 @Table(name = "post")
-public class PostEntity extends BaseTimeEntity {
+public class PostEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -52,9 +43,6 @@ public class PostEntity extends BaseTimeEntity {
 	@Column(name = "category", nullable = false)
 	private Category category;
 
-	@Column(name = "del_yn")
-	private boolean isDeleted;
-
 	@Builder
 	public PostEntity(String title, String content, UserEntity user, Category category) {
 		this.title = title;
@@ -63,15 +51,8 @@ public class PostEntity extends BaseTimeEntity {
 		this.category = category;
 	}
 
-	public void changeContent(String content){
-		this.content = content;
-	}
 
 	public void changeTitle(String title){
 		this.title = title;
-	}
-
-	public void changeCategory(Category category){
-		this.category = category;
 	}
 }
