@@ -9,7 +9,8 @@ import lombok.Getter;
 public enum Category {
 	BACKEND("백엔드"),
 	DATABASE("데이터베이스"),
-	INFRASTRUCTURE("인프라");
+	INFRASTRUCTURE("인프라"),
+	ETC("기타");
 
 	private String name;
 

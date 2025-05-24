@@ -47,10 +47,16 @@ public class PostService {
 		return PostListResponse.of(postListResponse);
 	}
 
-	public PostDetailResponse getPostById(final Long postId){
+	public PostDetailResponse getPost(final Long postId){
 		PostEntity postEntity = postRepository.findById(postId)
 			.orElseThrow(()-> new BusinessException(ErrorCode.DATA_NOT_FOUND));
 		return PostDetailResponse.of(postEntity);
+	}
+
+	public PostEntity getPostById(final Long postId){
+		PostEntity postEntity = postRepository.findById(postId)
+			.orElseThrow(()-> new BusinessException(ErrorCode.DATA_NOT_FOUND));
+		return postEntity;
 	}
 
 	@Transactional
